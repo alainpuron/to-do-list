@@ -1,43 +1,46 @@
-// when user clicks checkbox a line goes tho the text written
-function myFunction(checkbox) {
-    var text = checkbox.nextElementSibling;
-    if (checkbox.checked == true) {
-        text.style.textDecoration = "line-through";
+const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container");
+
+function addTask() {
+    if (inputBox.value === '') {
+        alert("You must write something!")
     }
-     else {
-        text.style.textDecoration = "none";
+    else {
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li);
+        let span = document.createElement("span");
+
+        // x icon
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
     }
-};
+    inputBox.value = "";
+    saveData();
+}
 
-var i = 0;
+listContainer.addEventListener("click",function(e){
+    if(e.target.tagName === "LI"){
 
-function duplicate() {
-    var original = document.getElementById('HiddenList');
-    var clone = original.cloneNode(true); 
-    clone.id = "HiddenList" + ++i;
-    clone.style.display = "block";
-    var addButton = document.getElementById('add');
-    addButton.parentNode.insertBefore(clone, addButton);
-};
-
-
-function del() {
-    var checkboxes = document.getElementsByClassName('todo');
-    var notes = document.getElementsByClassName('note');
-    var indexesToRemove = [];
-  
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        indexesToRemove.push(i);
-      }
+        // adds the class checked to the li elements
+        e.target.classList.toggle("checked");
+        saveData();
     }
-  
-    for (var i = indexesToRemove.length - 1; i >= 0; i--) {
-      var index = indexesToRemove[i];
-      checkboxes[index].parentNode.removeChild(checkboxes[index]);
-      notes[index].parentNode.removeChild(notes[index]);
+
+    // removes the class checked 
+    else if(e.target.tagName === "SPAN"){
+       e.target.parentElement.remove(); 
+       saveData();
+
     }
-  }
-  
+},false);
 
+// save data 
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
+}
 
+showTask();

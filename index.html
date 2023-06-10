@@ -2,32 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
     <link href="styles.css" rel="stylesheet">
-    <script src="script.js"></script>
-    <title>To do list</title>
+    
 </head>
 <body>
-    
-<!--Hidden to clone it clean-->
-<div id="HiddenList" style="display: none;">
-    <input type="checkbox" class="todo" name="note" value="note" onclick="myFunction(this)">
-    <input type="text" class="note" name="note" placeholder="What do you need to do?"><br>
-</div>
-
-<!--User places text -->
-<div id="list">
-    <input type="checkbox" class="todo" name="note" value="note" onclick="myFunction(this)">
-    <input type="text" class="note" name="note" placeholder="What do you need to do?"> 
-    <br>
-</div>
-
-
-
-<div><button id="add" onclick="duplicate()">Add</button>
-<div><button id="del" onclick="del()">Delete</button>
-
-</div>
+ <div class="container">
+    <div class="todo-app">
+        <h2>To Do List <img src="to-do.png" alt="icon"></h2>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add your notes">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-container">
+          
+        </ul>
+    </div>
+ </div>   
+ <script src="script.js"></script>
 </body>
 </html>

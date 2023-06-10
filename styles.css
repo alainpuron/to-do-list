@@ -1,38 +1,124 @@
 *{
     margin: 0;
     padding: 0;
+    font-family:'Courier New', Courier, monospace;
+    box-sizing: border-box;
 }
 body{
+    /* background-image: url('pexels-felix-mittermeier-956999.jpg'); */
+    overflow: hidden; /* Hide scrollbars */
+
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(0, 0, 0) 78.9%);    padding: 10px;
+}
+
+.todo-app{
+    width: 100%;
+    max-width: 540px;
+    background: rgba(255, 255, 255, 0.242);
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 20px;
+}
+
+.todo-app h2{
+    color: #ffffff;
+    /* display: flex;
+    align-items: center; */
     text-align: center;
-background-image: url(forest-1866837_1920.jpg);
-font-family:'Times New Roman', Times, serif;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 25px;
 }
 
-.note{
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    margin-top: 10px;
-    margin-bottom: 10px;
+input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
 }
-::placeholder { /* Most modern browsers support this now. */
-    color: rgba(125, 125, 125, 0.299);
- }
+button{
+    border: none;
+    outline: none;
+    padding: 16px 30px;
+    background: #ff1c03e8;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
 
-.todo{
-    zoom: 1.5;  
+
 }
 
-
-
-#add ,#del{
-    padding: 10px 40px 10px 40px;
+ul li{
+    list-style: none;
     font-size: 20px;
-    margin-top: 20px;
-    border: solid white 1px;
-    background: rgba(255, 255, 255, 0.336);
-}
-#add:hover ,#del:hover{
-    background: rgba(0, 0, 0, 0.263);
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
     color: white;
 }
+ul li::before{
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50px;
+    background-image:url(unchecked.png) ;
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 0px;
+    transition: 1s;
 
+}
+ul li.checked{
+    color: black;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    background-image: url(correct.png);
+    transition: 1s;
+   
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px; 
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 20%;
+    transition: 1s;
+
+}
+
+ul li span:hover{
+    background: #edeef0;
+    color: black;
+    transition: 1s;
+}
